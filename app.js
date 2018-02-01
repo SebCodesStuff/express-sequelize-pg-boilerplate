@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const index = require('./routes/index');
-const users = require('./routes/users');
+// const index = require('./server/routes/index');
+// const users = require('./server/routes/users');
 
 
 // view engine setup
@@ -24,9 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// Mount routes here
-app.use('/', index);
-app.use('/users', users);
+// Point Server to server/routes
+require('./server/routes')(app);
 
 
 // catch 404 and forward to error handler
